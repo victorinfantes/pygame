@@ -18,13 +18,14 @@ def run():
 
     ship = Ship(screen)
     bullets = Group()
+    aliens = Group()
+    gf.create_fleet(screen, aliens)
     # Bucle infinito
     while True:
-        gf.chek_events(screen, ship, bullets)
+        gf.chek_events(screen, ship, bullets, aliens)
         fpsclock.tick(30)
 
-        gf.update_screen(screen, ship, bullets)
-
+        gf.update_screen(screen, ship, bullets, aliens)
 
 
 run()

@@ -2,10 +2,11 @@
 import sys
 
 from bullet import Bullet
+from alien import Alien
 import pygame
 
 
-def chek_events(screen, ship, bullets):
+def chek_events(screen, ship, bullets, aliens):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -22,7 +23,7 @@ def chek_events(screen, ship, bullets):
                 bullets.add(bullet)
 
 
-def update_screen(screen, ship, bullets):
+def update_screen(screen, ship, bullets, aliens):
     screen.fill((200, 200, 200))
     ship.update_position()
     for bullet in bullets.sprites():
@@ -32,5 +33,10 @@ def update_screen(screen, ship, bullets):
 
     for bullet in bullets.sprites():
         bullet.draw_bullet()
+    aliens.draw(screen)
 
     pygame.display.flip()
+
+def create_fleet(screen,aliens):
+    alien = Alien(screen)
+    aliens.add(alien)
